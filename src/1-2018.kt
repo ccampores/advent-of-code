@@ -10,23 +10,39 @@ fun main() {
 
 fun firstFreqTwice(inputPath: String): Int {
     val lines = File(inputPath).readLines()
+
+    if (lines.isEmpty())
+        throw Exception("input is empty")
+
     var sum = 0
     val freqsFound = mutableSetOf(sum)
-    do {
+
+    while (true) {
         lines.forEach {
-            val el = it.toInt()
-            sum += el
+            try {
+                val el = it.toInt()
+                sum += el
+            } catch (e: NumberFormatException) {
+                println("Invalid input: $it is not a number")
+                throw e
+            }
+
             if(!freqsFound.contains(sum))
                 freqsFound.add(sum)
             else return sum
         }
-    } while (true)
+    }
 }
 
 fun sumFrequencies(inputPath: String) : Int{
-    //TODO check input
     return File(inputPath).useLines {
-        it.fold(0) { sum, el -> sum + el.toInt() }
+        it.fold(0) { sum, el -> try {
+            sum + el.toInt()
+            } catch (e: NumberFormatException) {
+                println("Invalid input: $it is not a number")
+                throw e
+            }
+        }
     }
 }
 
