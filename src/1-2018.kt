@@ -39,7 +39,7 @@ fun sumFrequencies(inputPath: String) : Int{
         it.fold(0) { sum, el -> try {
             sum + el.toInt()
             } catch (e: NumberFormatException) {
-                println("Invalid input: $it is not a number")
+                println("Invalid input: $el is not a number")
                 throw e
             }
         }
