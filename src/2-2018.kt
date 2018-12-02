@@ -20,7 +20,7 @@ fun findCommonLetters(inputPath: String): String? {
             return commonLettersIfOnly1Diff(lines[i], lines[j]) ?: continue
     }
 
-    return null
+    throw Exception("no ID found")
 }
 
 fun commonLettersIfOnly1Diff(s1: String, s2: String) : String? {
