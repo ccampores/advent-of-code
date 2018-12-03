@@ -3,7 +3,7 @@ import kotlin.test.assertEquals
 
 fun main() {
     val inputPath = "res/2-2018-input.txt"
-//    val exInputPath = "res/2-2018-exInput.txt"
+//    val exInputPath = "res/exInput.txt"
 
 //    assertEquals("fgij", findCommonLetters(exInputPath))
     assertEquals("pbykrmjmizwhxlqnasfgtycdv", findCommonLetters(inputPath))
@@ -13,7 +13,7 @@ fun main() {
 
 }
 
-fun findCommonLetters(inputPath: String): String? {
+fun findCommonLetters(inputPath: String): String {
     val lines = File(inputPath).readLines()
     for(i in 0 until lines.size-1) {
         for(j in i+1 until lines.size)
