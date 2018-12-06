@@ -5,13 +5,11 @@ import kotlin.test.assertEquals
 
 
 fun main() {
-    val inputPath = "res/exInput.txt" //"res/4-2018-input.txt"
+    val inputPath = "res/4-2018-input.txt"
     val timeplan = getTimeplan(parse(inputPath))
 
-    assertEquals(99759, mostAsleep(timeplan))
-
-
-//    println(part1(inputPath))
+    assertEquals(99759, part1(timeplan))
+    assertEquals(97884, part2(timeplan))
 
 }
 
@@ -19,7 +17,7 @@ private fun parse(inputPath: String) : List<String> {
     return File(inputPath).readLines().sorted()
 }
 
-fun mostAsleep(timeplan: Map<Int, MutableList<Int>> ): Int {
+fun part1(timeplan: Map<Int, MutableList<Int>> ): Int {
     val guidesAsleep = TreeMap<Int, Int>()
 
     timeplan.forEach {
@@ -38,6 +36,27 @@ fun mostAsleep(timeplan: Map<Int, MutableList<Int>> ): Int {
         }
 
         guidesAsleep[totAsleep] = it.key * (asleepMinutes.indices.maxBy { asleepMinutes[it] } ?: -1)
+    }
+
+    return guidesAsleep.lastEntry().value
+}
+
+fun part2(timeplan: Map<Int, MutableList<Int>> ): Int {
+    val guidesAsleep = TreeMap<Int, Int>()
+
+    timeplan.forEach {
+        val asleepIntervals = LinkedList<Pair<Int, Int>>()
+        val asleepMinutes = IntArray(60)
+
+        for (i in 0 until it.value.size step 2) {
+            val (start, end) = it.value[i] to it.value[i+1]
+            asleepIntervals.add(Pair(start, end))
+            for (m in start until end)
+                asleepMinutes[m]++
+        }
+
+        val minuteAsleepCount = asleepMinutes.max() ?: 0
+        guidesAsleep[minuteAsleepCount] = it.key * (asleepMinutes.indices.maxBy { asleepMinutes[it] } ?: -1)
     }
 
     return guidesAsleep.lastEntry().value
