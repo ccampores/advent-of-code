@@ -1,8 +1,10 @@
+package `2018`
+
 import java.io.File
 import kotlin.test.assertEquals
 
 fun main() {
-    val inputPath = "res/1-2018-input.txt"
+    val inputPath = "resources/2018/day1.txt"
 
     assertEquals(516, sumFrequencies(inputPath))
     assertEquals(71892, firstFreqTwice(inputPath))

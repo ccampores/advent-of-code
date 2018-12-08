@@ -1,3 +1,5 @@
+package `2018`
+
 import java.io.File
 import java.util.*
 import kotlin.collections.HashMap
@@ -5,7 +7,7 @@ import kotlin.test.assertEquals
 
 
 fun main() {
-    val inputPath = "res/4-2018-input.txt"
+    val inputPath = "resources/2018/day4.txt"
     val timeplan = getTimeplan(parse(inputPath))
 
     assertEquals(99759, part1(timeplan))

@@ -1,11 +1,12 @@
+package `2018`
+
 import java.io.File
 import kotlin.math.max
 import kotlin.math.min
-import kotlin.test.assertEquals
 
 data class Rect(val dx:Pair<Int, Int>, val dy:Pair<Int, Int>)
 data class Point(val x:Int, val y:Int)
-data class Claim(val id:String, val area:Rect, var overlap:Boolean=false)
+data class Claim(val id:String, val area: Rect, var overlap:Boolean=false)
 
 fun findOverlapping(inputPath: String): Pair<Int, String> {
 
@@ -63,11 +64,11 @@ fun isOverlapInterval(i1:Pair<Int, Int>, i2:Pair<Int, Int>) : Boolean {
     }
 }
 
-fun isOverlapArea(s1:Rect, s2:Rect) : Boolean {
+fun isOverlapArea(s1: Rect, s2: Rect) : Boolean {
     return isOverlapInterval(s1.dx, s2.dx) && isOverlapInterval(s1.dy, s2.dy)
 }
 
-fun overlappingArea(s1:Rect, s2:Rect) : Rect? {
+fun overlappingArea(s1: Rect, s2: Rect) : Rect? {
     return when {
         isOverlapArea(s1, s2) -> {
             val overlapDx = max(s1.dx.first, s2.dx.first) to min(s1.dx.second, s2.dx.second)
@@ -79,9 +80,9 @@ fun overlappingArea(s1:Rect, s2:Rect) : Rect? {
 }
 
 fun main() {
-    val inputPath = "res/3-2018-input.txt"
+    val inputPath = "resources/2018/day3.txt"
 
-//    assertEquals(107663, findOverlapping(inputPath))
+//    assertEquals(107663, `2018`.findOverlapping(inputPath))
     println(findOverlapping(inputPath))
 }
 

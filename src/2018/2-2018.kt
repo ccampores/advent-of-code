@@ -1,13 +1,15 @@
+package `2018`
+
 import java.io.File
 import kotlin.test.assertEquals
 
 fun main() {
-    val inputPath = "res/2-2018-input.txt"
-//    val exInputPath = "res/exInput.txt"
+    val inputPath = "resources/2018/day2.txt"
+//    val exInputPath = "resources/example.txt"
 
-//    assertEquals("fgij", findCommonLetters(exInputPath))
+//    assertEquals("fgij", `2018`.findCommonLetters(exInputPath))
     assertEquals("pbykrmjmizwhxlqnasfgtycdv", findCommonLetters(inputPath))
-//    assertEquals("ab", commonLettersIfOnly1Diff("abc", "abd"))
+//    assertEquals("ab", `2018`.commonLettersIfOnly1Diff("abc", "abd"))
     assertEquals(6000, checksum(inputPath))
 
 

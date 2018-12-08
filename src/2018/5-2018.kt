@@ -1,9 +1,11 @@
+package `2018`
+
 import java.io.File
 import java.util.*
 import kotlin.test.assertEquals
 
 fun main() {
-    val inputPath = "res/5-2018-input.txt"
+    val inputPath = "resources/2018/day5.txt"
     val input = File(inputPath).readText()
 
     assertEquals(10, reaction("dabAcCaCBAcCcaDA"))
