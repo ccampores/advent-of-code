@@ -19,7 +19,7 @@ fun main() {
 fun minLengthReaction(input: String) : Int {
     var minLength = Int.MAX_VALUE
 
-    for (c in 'a'..'z') {
+    ('a'..'z').forEach { c ->
         val filteredInput = input.filter { (it != c) && (it != c.toUpperCase()) }
         val length = reaction(filteredInput)
         if (length < minLength)
@@ -32,13 +32,13 @@ fun minLengthReaction(input: String) : Int {
 fun reaction(input: String): Int {
     val stackSeen = Stack<Char>()
 
-    for (i in 0 until input.length) {
+    input.forEach {
         if (stackSeen.isNotEmpty()) {
-            if (!isReaction(stackSeen.peek(), input[i]))
-                stackSeen.push(input[i])
+            if (!isReaction(stackSeen.peek(), it))
+                stackSeen.push(it)
             else stackSeen.pop()
         }
-        else stackSeen.push(input[i])
+        else stackSeen.push(it)
     }
 
     return stackSeen.size
