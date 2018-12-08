@@ -1,10 +1,6 @@
-import sun.tools.tree.BooleanExpression
 import java.io.File
-import java.lang.StringBuilder
 import java.util.*
 import kotlin.test.assertEquals
-import kotlin.test.assertFalse
-import kotlin.test.assertTrue
 
 fun main() {
     val inputPath = "res/5-2018-input.txt"
@@ -13,10 +9,23 @@ fun main() {
     assertEquals(10, reaction("dabAcCaCBAcCcaDA"))
     assertEquals(11108, reaction(input))
 
-//    println(reaction(File(inputPath).readText()))
+    assertEquals(4, minLengthReaction("dabAcCaCBAcCcaDA"))
+    assertEquals(5094, minLengthReaction(input))
 
 }
 
+fun minLengthReaction(input: String) : Int {
+    var minLength = Int.MAX_VALUE
+
+    for (c in 'a'..'z') {
+        val filteredInput = input.filter { (it != c) && (it != c.toUpperCase()) }
+        val length = reaction(filteredInput)
+        if (length < minLength)
+            minLength = length
+    }
+
+    return minLength
+}
 
 fun reaction(input: String): Int {
     val stackSeen = Stack<Char>()
